@@ -10,12 +10,12 @@ import org.json.JSONArray;
  */
 public class FakeApiService implements IApiService {
 
-    ApiService mRealService;
+    IApiService mRealService;
     private CountingIdlingResource mIdlingResource;
 
-    public FakeApiService(CountingIdlingResource idlingResource) {
+    public FakeApiService(IApiService realService, CountingIdlingResource idlingResource) {
+        mRealService = realService;
         mIdlingResource = idlingResource;
-        mRealService = new ApiService();
     }
 
     @Override

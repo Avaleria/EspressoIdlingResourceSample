@@ -11,9 +11,8 @@ import org.json.JSONArray;
 
 public class MainActivity extends ActionBarActivity {
 
-    Button btnLoad, btnCount;
+    Button btnLoad;
     TextView tvResult;
-    int counter;
     IApiService mService;
     public static final String RS_TPL = "data count: %d";
 
@@ -30,10 +29,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setup(){
-        counter = 1;
         tvResult = (TextView)findViewById(R.id.tv_result);
         btnLoad  = (Button)findViewById(R.id.btn_load);
-        btnCount = (Button)findViewById(R.id.btn_count);
 
         mService = new ApiService();
 
@@ -41,14 +38,6 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View view) {
                 loadFromApi();
-            }
-        });
-
-        btnCount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                counter += 1;
-                btnCount.setText(String.valueOf(counter));
             }
         });
     }
