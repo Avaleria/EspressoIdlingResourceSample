@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IdleEspressoSample</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="load">Load</string>
+    <string name="data_msg">My data from some source!</string>
+    <string name="loading">loading...</string>
+    <string name="count">count</string>
+</resources>
