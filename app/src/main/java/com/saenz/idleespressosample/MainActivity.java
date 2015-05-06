@@ -64,19 +64,6 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    private void loadTask(){
-        isLoading(true);
-        BaseCallback<String> callback = new BaseCallback<String>() {
-            @Override
-            public void success(String response) {
-                isLoading(false);
-                setupViewFromData(response);
-            }
-        };
-        LoadDataTask task = new LoadDataTask(this, callback);
-        task.execute();
-    }
-
     private void setupViewFromData(String response){
         tvResult.setText(response);
     }

@@ -23,6 +23,7 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
     public void setUp() throws Exception {
         super.setUp();
         MainActivity activity = getActivity();
+        
         CountingIdlingResource idlingResource =
                 new CountingIdlingResource(ApiService.class.getSimpleName());
         IApiService fakeService = new FakeApiService(idlingResource);
@@ -30,12 +31,15 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         registerIdlingResources(idlingResource);
     }
 
-    public void testShouldShowView(){
+    public void testShouldShowDataFromApiAfterClickOnLoadButton(){
         onView(withId(R.id.btn_load)).check(matches(isDisplayed()));
         onView(withId(R.id.tv_result)).check(matches(withText(R.string.hello_world)));
 
         onView(withId(R.id.btn_load)).perform(click());
-        final String EXPECTED_MSG = String.format(MainActivity.RS_TPL, 500);
+
+        final int EXPECTED_COUNT = 500;
+        final String EXPECTED_MSG = String.format(MainActivity.RS_TPL, EXPECTED_COUNT);
+
         onView(withId(R.id.tv_result)).check(matches(withText(EXPECTED_MSG)));
     }
 }
